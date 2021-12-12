@@ -63,6 +63,11 @@ Welcome to Getaride a simple ride hailing program made with GOLANG and GORM, inv
 *Using GORM, an Object Relational Mapping Library.
 The GORM is a good Golang ORM package that attempts to be developer-friendly. It's an object-relational mapping (ORM) library for dealing with relational databases. The database/sql package is used to build this gorm library. an example would be instead of using query when excuting a SQL line, instead using GORM it simplifies the execution and creation of the database. Another example of using GORM is simplifying the database creation, if the table or database does not exist, GORM will automatically create and insert the table in the database along with the data that is posted.
 
+
+
+
+<img src="images/logo.png" alt="Logo" width="80" height="80">
+
 For the Getaride application, there are 3 different microservices used and command line to execute the console application,
 The rest API communicates with the used of HTTP GET POST PUT methods, such as creating the passenger account, it will issue a POST request and from there the information that is inputted will be send to the database for storing, The logic and data handling may then be handled within each Microservice, all while adhering to the loosely coupled philosophy that Microservices is known for.
 
