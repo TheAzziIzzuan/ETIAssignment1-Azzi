@@ -14,18 +14,15 @@
     <li>
       <a href="#Assignment">Assignment Objective</a>
       <ul>
-        <li><a href="#Assignment Requirements">Assignment Requirements</a></li>
-        <li><a href="#Assignment Objectives">Assignment Objectives</a></li>
-        <li><a href="# Design Considerations for the microservices">Design Considerations for the microservices</a></li>
+        <li><a href="#AssignmentRequirements">Assignment Requirements</a></li>
+        <li><a href="#AssignmentObjectives">Assignment Objectives</a></li>
+        <li><a href="#DesignConsiderationsforthemicroservices">Design Considerations for the microservices</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
@@ -48,16 +45,16 @@ Welcome to Getaride a simple ride hailing program made with GOLANG and GORM, inv
 
 
 <!-- Assignment Objective-->
-## Assignment Requirements
+## AssignmentRequirements
 
 * Minimum 2 microservices using GOLANG
 * Persistent storage of information using database
 
-## Assignment Objectives
+## #AssignmentObjectives
 * To be able to develop REST api
 * Able to communicate between the api's
 
-## Design Considerations for the microservices
+## DesignConsiderationsforthemicroservices
 * The microservices have been created in such a way that they are uniquely individual.
 * An example would be the passenger microservice, which was created solely for passengers and database communication.
 * The same can be said for the rest of the microservices, such as Trip, which can only communicate with Trip database, and Driver, which can only communicate with Driver database.
