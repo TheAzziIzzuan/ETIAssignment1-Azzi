@@ -115,7 +115,7 @@ GOLANG and MYSQL must be installed in order for the program to work
     go get -u github.com/gorilla/handlers
     go get -u gorm.io/gorm
    ```
-3. Execute database script located in /database/InitDB.sql
+3. Execute database script located in /database/Execute Database.sql
     
     
 <p align="right">(<a href="#top">back to top</a>)</p>
