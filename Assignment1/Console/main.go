@@ -70,7 +70,9 @@ func main() {
 	}
 }
 
+//menu of passenger when logging in
 func passengerhome() {
+	//check if passenger email is valid
 	fmt.Println("Enter your Passenger Email: ")
 	var validemail string
 	fmt.Scanln(&validemail)
@@ -92,7 +94,8 @@ func passengerhome() {
 
 		var userInput string
 		fmt.Scanln(&userInput)
-
+		
+		//different options for passenger
 		if userInput == "1" {
 			updatePassengeraccount(validemail)
 		} else if userInput == "2" {
@@ -106,7 +109,9 @@ func passengerhome() {
 	}
 }
 
+//driver home menu upon logging in
 func driverhome() {
+	//validate driver email address
 	fmt.Println("Enter your Driver Email:")
 	var validemail string
 	fmt.Scanln(&validemail)
@@ -145,7 +150,7 @@ func driverhome() {
 	}
 }
 
-//get passenger email
+//get passenger email by calling passenger api using email address
 func getPassengerbyemail(email string) Passenger {
 	url := "http://localhost:5001/passenger/trip/" + email
 
@@ -165,7 +170,7 @@ func getPassengerbyemail(email string) Passenger {
 	return passenger
 }
 
-//get drivertrip email
+//get driver email by calling driver api using email address
 func getDriverbyemail(email string) Driver {
 	url := "http://localhost:5010/driver/" + email
 
@@ -186,7 +191,7 @@ func getDriverbyemail(email string) Driver {
 	//empty driver
 	return driver
 }
-
+//get driver trip by calling trip api using driver id
 func getDriverTripbyID(driver_id int) []Trip {
 	url := fmt.Sprintf("http://localhost:5020/trip/driverhistory/%d", driver_id)
 
@@ -207,7 +212,7 @@ func getDriverTripbyID(driver_id int) []Trip {
 	//return empty trips
 	return trips
 }
-
+//get passenger trip by calling trip api using passenger id
 func getPassengerTripbyID(passenger_id int) []Trip {
 	url := fmt.Sprintf("http://localhost:5020/trip/passengerhistory/%d", passenger_id)
 
@@ -229,6 +234,7 @@ func getPassengerTripbyID(passenger_id int) []Trip {
 	return trips
 }
 
+//function to print and display driver trips
 func displaydrivertrips(trips []Trip) {
 	fmt.Println("DRIVER TRIPS")
 	for _, trip := range trips {
@@ -241,7 +247,7 @@ func displaydrivertrips(trips []Trip) {
 		fmt.Println("")
 	}
 }
-
+//function to print and display passenger trips
 func displaypassengertrips(trips []Trip) {
 	fmt.Println("PASSENGER HISTORY TRIPS")
 	for _, trip := range trips {
@@ -542,6 +548,7 @@ func updateAccountfordriverapi(validemail string, firstname string, lastname str
 	return driver
 }
 
+//execute driver trip by calling driver api with put request
 func startTripDriver(driverid int) Trip {
 	url := fmt.Sprintf("http://localhost:5010/driver/starttrip/%d", driverid)
 
@@ -571,6 +578,7 @@ func startTripDriver(driverid int) Trip {
 	return trip
 }
 
+//execute end driver trip by calling driver api with put request
 func endTripDriver(driverid int) Trip {
 	url := fmt.Sprintf("http://localhost:5010/driver/endtrip/%d", driverid)
 
@@ -600,6 +608,7 @@ func endTripDriver(driverid int) Trip {
 	return trip
 }
 
+//function that ask user for input
 func createTrip(validemail string) {
 	fmt.Println("Please your PickUpPoint: ")
 	var pickuppoint string
@@ -617,6 +626,7 @@ func createTrip(validemail string) {
 
 }
 
+//create trip using the function that is mentioned above
 func createtripapi(validemail string, pickup string, dropoff string) Trip {
 	url := "http://localhost:5020/trip/" + validemail
 
