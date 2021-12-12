@@ -14,7 +14,9 @@
     <li>
       <a href="#Assignment">Assignment Objective</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#Assignment Requirements">Assignment Requirements</a></li>
+        <li><a href="#Assignment Objectives">Assignment Objectives</a></li>
+        <li><a href="# Design Considerations for the microservices">Design Considerations for the microservices</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
