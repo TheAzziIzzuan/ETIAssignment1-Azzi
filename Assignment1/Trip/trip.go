@@ -13,6 +13,7 @@ import (
 	"gorm.io/gorm"
 )
 
+//Connect to Database
 func DataMigrations() {
 	db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
@@ -40,7 +41,7 @@ func main() { /*Connect to DB*/
 
 var db *gorm.DB
 var err error
-
+//Making global database connection
 const dsn = "root:root@tcp(127.0.0.1:3306)/assignment1?charset=utf8mb4&parseTime=True&loc=Local"
 
 type Trip struct {
@@ -74,6 +75,7 @@ type Driver struct {
 	Available     bool   `json:"available" gorm:"type:bool" gorm:"default:true"`
 }
 
+//get available driver using the driver api and returning available driver
 func GetAvailableDriver() (Driver, error) {
 	url := "http://localhost:5010/driver"
 
@@ -93,6 +95,8 @@ func GetAvailableDriver() (Driver, error) {
 	return avaiDriver, nil
 }
 
+
+//create trip by checking the input user and create trip using the passengerid input and creata a trip data
 func CreateTrip(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
@@ -129,6 +133,7 @@ func CreateTrip(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+//call get passenger api from passenger microservices and return the passenger email
 func getPassengerbyemail(passengeremail string) (Passenger, error) {
 	url := "http://localhost:5001/passenger/trip/" + passengeremail
 
@@ -145,6 +150,7 @@ func getPassengerbyemail(passengeremail string) (Passenger, error) {
 	}
 }
 
+//Get trip by passengerid
 func GetTrip(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var trips []Trip
@@ -155,6 +161,7 @@ func GetTrip(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Trips: ", trips)
 }
 
+//get trip of driver by driverid
 func GetDriverTrip(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var trips []Trip
@@ -164,6 +171,7 @@ func GetDriverTrip(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Trips: ", trips)
 }
 
+//Start trip for driver and changing the status of trip to in progress
 func startTripDriver(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var trips Trip
@@ -179,6 +187,7 @@ func startTripDriver(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+//end trip for driver and changing the status of the trip to completed
 func endTripDriver(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var trips Trip
