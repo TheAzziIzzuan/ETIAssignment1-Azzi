@@ -146,35 +146,24 @@ GOLANG and MYSQL must be installed in order for the program to work
 <!-- ROADMAP -->
 ## Roadmap
 ```sh
-- [] Feature 1
-- [] Feature 2
-- [] Feature 3
-    - [] Nested Feature
+- [1] Create Database
+- [2] Create Microservices REST api using GOLANG
+- [3] Console Application that call all the REST api
 ```
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 <!-- CONTACT -->
 ## Contact
-
-My Personal Email - TheAzziIzzuan@gmail.com
-My School Email - S10189579@connect.np.edu.sg
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* [y]()
-* []()
-* []()
+School Email
+```sh
+S10189579@connect.np.edu.sg
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
 
 
 
