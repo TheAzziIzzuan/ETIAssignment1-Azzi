@@ -12,7 +12,7 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
-
+// Database Migration
 func DataMigrations() {
 	db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
@@ -67,6 +67,7 @@ type Trip struct {
 	Status        string `json:"status"`
 }
 
+//creating a Driver account by comparing input 
 func CreateDriver(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	reqBody, _ := ioutil.ReadAll(r.Body)
@@ -154,12 +155,13 @@ func CreateDriver(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	//if pass all validations come here
+	//if all validations passed come here
 	db.Create(&newdriver)
 	json.NewEncoder(w).Encode(newdriver)
 
 }
 
+//get available driver 
 func GetDriver(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
 		var driver Driver
@@ -176,6 +178,8 @@ func GetDriver(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+
+//get available driver by comparing email address of input with database
 func GetDriverbyEmail(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
@@ -190,6 +194,7 @@ func GetDriverbyEmail(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+//delete driver by comparing email address of input with database
 func DeleteDriver(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
@@ -204,6 +209,7 @@ func DeleteDriver(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+//update driver by comparing email address of input with database
 func UpdateDriver(w http.ResponseWriter, router *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(router)
@@ -223,6 +229,8 @@ func UpdateDriver(w http.ResponseWriter, router *http.Request) {
 	}
 }
 
+
+//get trip status by calling trip api using driverid
 func updatetripstatus(driverID string) error {
 	url := "http://localhost:5020/trip/status"
 
@@ -246,6 +254,7 @@ func updatetripstatus(driverID string) error {
 	return nil
 }
 
+//update trip status to end by calling trip api using driverid
 func updatetripstatusend(driverID string) error {
 	url := "http://localhost:5020/trip/completed"
 
@@ -269,7 +278,7 @@ func updatetripstatusend(driverID string) error {
 	return nil
 }
 
-//this fucntion become put
+//start driver trip using driver ID and using the function that is calling the trip api to execute
 func startTrip(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
@@ -298,7 +307,7 @@ func startTrip(w http.ResponseWriter, r *http.Request) {
 	}
 
 }
-
+//end driver trip using driver ID and using the function that is calling the trip api to execute
 func endTrip(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
