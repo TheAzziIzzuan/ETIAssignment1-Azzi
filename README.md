@@ -12,7 +12,7 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#Assignment">Assignment Objective</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
@@ -32,26 +32,62 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Welcome to Getaride made with GOLANG
+Welcome to Getaride a simple ride hailing program made with GOLANG and GORM, involves CLI to use the application.
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 ### Built With
 
-* [golang](https://go.dev/)
+* [GOLANG](https://go.dev/)
+* [GORM](https://gorm.io/index.html)
+* [MYSQL](https://www.mysql.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-<!-- GETTING STARTED -->
-## Getting Started
+<!-- Assignment Objective-->
+## Assignment Requirements
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+* Minimum 2 microservices using GOLANG
+* Persistent storage of information using database
+
+## Assignment Objectives
+* To be able to develop REST api
+* Able to communicate between the api's
+
+## Design Considerations for the microservices
+* The microservices have been created in such a way that they are uniquely individual.
+* An example would be the passenger microservice, which was created solely for passengers and database communication.
+* The same can be said for the rest of the microservices, such as Trip, which can only communicate with Trip database, and Driver, which can only communicate with Driver database.
+
+*Using GORM, an Object Relational Mapping Library.
+The GORM is a good Golang ORM package that attempts to be developer-friendly. It's an object-relational mapping (ORM) library for dealing with relational databases. The database/sql package is used to build this gorm library. an example would be instead of using query when excuting a SQL line, instead using GORM it simplifies the execution and creation of the database. Another example of using GORM is simplifying the database creation, if the table or database does not exist, GORM will automatically create and insert the table in the database along with the data that is posted.
+
+For the Getaride application, there are 3 different microservices used and command line to execute the console application,
+The rest API communicates with the used of HTTP GET POST PUT methods, such as creating the passenger account, it will issue a POST request and from there the information that is inputted will be send to the database for storing, The logic and data handling may then be handled within each Microservice, all while adhering to the loosely coupled philosophy that Microservices is known for.
+
+The Getaride application consist of 
+
+Passenger Microservices
+* Create Passenger (POST)
+* Update Passenger Details (PUT)
+* Create Trip by calling the Trip Microservice (POST)
+* Get all trips by calling the Trip Microservice (GET)
+
+Driver Microservices
+* Create Driver (POST)
+* Update Driver Details (PUT)
+* Start Trip (PUT) by calling the Trip Microservice (POST)
+* Stop Trip (PUT) by calling the Trip Microservice (POST)
+* Get all trips by driver id calling the Trip Microservice (GET)
+
+Trip
+* Creates TRIP (Passenger Creates Trip) - uses POST method to create trip and GET method to call passenger and driver microservices
+* 
+* 
+
+Trip Microservices
+
 
 ### Prerequisites
 
@@ -147,7 +183,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
+* [y]()
 * []()
 * []()
 
