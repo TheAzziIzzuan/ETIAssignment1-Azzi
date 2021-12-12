@@ -82,37 +82,37 @@ Driver Microservices
 * Get all trips by driver id calling the Trip Microservice (GET)
 
 Trip
-* Creates TRIP (Passenger Creates Trip) - uses POST method to create trip and GET method to call passenger and driver microservices
-* 
-* 
-
-Trip Microservices
+* Creates TRIP (Passenger Creates Trip) - uses POST method to create trip, GET method to call passenger and driver microservices for the informations such as passenger ID and driver availibilty
+* Start Trip (PUT) - when driver starts trip this function will be called by API
+* End Trip (PUT) - when driver ends trip this function will be called by API
 
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+GOLANG and MYSQL must be installed in order for the program to work
+
+1. SQL information
   ```sh
-  npm install npm@latest -g
+  Username : Root
+  Password : Root
   ```
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/theazziizzuan/ETIAssignment1-Azzi.git
    ```
-3. Install NPM packages
+2. Install libraries
    ```sh
-   npm install
+    go get -u github.com/go-sql-driver/mysql
+    go get -u github.com/gorilla/mux
+    go get -u github.com/gorilla/handlers
+    go get -u gorm.io/gorm
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
+3. Execute database script located in /database/InitDB.sql
+    
+    
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -120,10 +120,25 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
+1. Start the Microservices
+   ```sh
+   cd /Assignment1/Passenger
+   go run Passenger.go
+   ```
+    ```sh
+   cd /Assignment1/Driver
+   go run Driver.go
+   ```
+    ```sh
+   cd /Assignment1/Trip
+   go run Trip.go 
+   ```
+   
+2. Start the console app
+   ```sh
+    cd /Assignment1/Console
+    go run main.go
+   ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
