@@ -60,7 +60,8 @@ Welcome to Getaride a simple ride hailing program made with GOLANG and GORM, inv
 * The same can be said for the rest of the microservices, such as Trip, which can only communicate with Trip database, and Driver, which can only communicate with Driver database.
 
 *Using GORM, an Object Relational Mapping Library.
-The GORM is a good Golang ORM package that attempts to be developer-friendly. It's an object-relational mapping (ORM) library for dealing with relational databases. The database/sql package is used to build this gorm library. an example would be instead of using query when excuting a SQL line, instead using GORM it simplifies the execution and creation of the database. Another example of using GORM is simplifying the database creation, if the table or database does not exist, GORM will automatically create and insert the table in the database along with the data that is posted.
+Gorm, is an object-relational mapping (ORM) library for dealing with relational databases. The database/sql package is used to build this gorm library. an example would be instead of using query when excuting a SQL line, instead using GORM it simplifies the execution and insertion of data in the table. Another example of using GORM is simplifying the database creation, if the table does not exist, GORM can also be used for the initial migration and creation of the database schema.
+
 
 
 
