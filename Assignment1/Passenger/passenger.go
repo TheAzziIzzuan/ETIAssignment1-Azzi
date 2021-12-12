@@ -12,7 +12,7 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
-
+//database migration
 func DataMigrations() {
 	db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
@@ -62,6 +62,8 @@ type Trip struct {
 	Status        string `json:"status"`
 }
 
+
+//create passenger with validations
 func CreatePassenger(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	reqBody, _ := ioutil.ReadAll(r.Body)
@@ -118,12 +120,13 @@ func CreatePassenger(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	//if pass all validations come here
+	//if all validations passed come here
 	db.Create(&newpassenger)
 	json.NewEncoder(w).Encode(newpassenger)
 
 }
 
+// get passenger by comparing email address input with passenger email address in database
 func GetPassenger(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
@@ -138,6 +141,7 @@ func GetPassenger(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+//delete passenger by comparing email address input with passenger email address in database
 func DeletePassenger(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
@@ -152,6 +156,7 @@ func DeletePassenger(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// update passenger by comparing email address input with passenger email address in database
 func UpdatePassenger(w http.ResponseWriter, router *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(router)
@@ -170,6 +175,7 @@ func UpdatePassenger(w http.ResponseWriter, router *http.Request) {
 	}
 }
 
+//call a trip api to get trip by passenger ID
 func getPassengertrip(passengerId string) ([]Trip, error) {
 	url := "http://localhost:5020/trip/" + passengerId
 
@@ -186,6 +192,7 @@ func getPassengertrip(passengerId string) ([]Trip, error) {
 	}
 }
 
+//actual function of geting the passenger trip by passenger ID
 func GetPassengerTripbyID(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
