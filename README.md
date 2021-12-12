@@ -66,7 +66,7 @@ The GORM is a good Golang ORM package that attempts to be developer-friendly. It
 
 
 
-<img src="images/Architecture Diagram.jpg" alt="Logo" width="80" height="800">
+<img src="images/Architecture Diagram.jpg" alt="Logo" width="1080" height="720">
 
 For the Getaride application, there are 3 different microservices used and command line to execute the console application,
 The rest API communicates with the used of HTTP GET POST PUT methods, such as creating the passenger account, it will issue a POST request and from there the information that is inputted will be send to the database for storing, The logic and data handling may then be handled within each Microservice, all while adhering to the loosely coupled philosophy that Microservices is known for.
