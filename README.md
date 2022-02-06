@@ -67,31 +67,28 @@ Gorm, is an object-relational mapping (ORM) library for dealing with relational 
 
 <img src="images/Architecture Diagram.jpg" alt="Logo" width="1080" height="720">
 
-For the Module Microservice, there are 2 different table used to create modules, and another is to assign the module and finally the Front End to navigate,
-The rest API communicates with the used of HTTP GET POST PUT methods, such as creating the new Modules, it will issue a POST request and from there the information that is inputted will be send to the module table for storing and Front End to view all created modules, this also applies to assigned modules to tutor, delete modules, update modules,
-all while adhering to the loosely coupled philosophy that Microservices is known for.
+For the Getaride application, there are 3 different microservices used and command line to execute the console application,
+The rest API communicates with the used of HTTP GET POST PUT methods, such as creating the passenger account, it will issue a POST request and from there the information that is inputted will be send to the database for storing, The logic and data handling may then be handled within each Microservice, all while adhering to the loosely coupled philosophy that Microservices is known for.
 
-The Module Microservice consist of 
+The Getaride application consist of 
 
-Module Microservice
-* Create Module (POST)
-* Update Module Details (PUT)
-* Delete Module(Delete)
-* Get all Module by calling the Module Microservice (GET)
-* Assign Modules to Tutor (PUT)
+Passenger Microservices
+* Create Passenger (POST)
+* Update Passenger Details (PUT)
+* Create Trip by calling the Trip Microservice (POST)
+* Get all trips by calling the Trip Microservice (GET)
 
+Driver Microservices
+* Create Driver (POST)
+* Update Driver Details (PUT)
+* Start Trip (PUT) by calling the Trip Microservice (POST)
+* Stop Trip (PUT) by calling the Trip Microservice (POST)
+* Get all trips by driver id calling the Trip Microservice (GET)
 
-Module FrontEnd
-* Display Modules
-* Create Modules
-* Update Modules
-* Search for modules
-* Assign Modules
-
-Database Tables
-* Modules - Used to store Modules Information
-* ModulesTutor = Used to store and update modules that are assigned to the tutors
-
+Trip
+* Creates TRIP (Passenger Creates Trip) - uses POST method to create trip, GET method to call passenger and driver microservices for the informations such as passenger ID and driver availibilty
+* Start Trip (PUT) - when driver starts trip this function will be called by API
+* End Trip (PUT) - when driver ends trip this function will be called by API
 
 
 ### Prerequisites
